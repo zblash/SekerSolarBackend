@@ -4,8 +4,8 @@
     "windowsAuthentication": false, 
     "anonymousAuthentication": true, 
     "iisExpress": {
-      "applicationUrl": "http://localhost:56530",
-      "sslPort": 44331
+      "applicationUrl": "http://localhost:56620",
+      "sslPort": 44391
     }
   },
   "profiles": {
@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "SekerSolarBackend": {
+    "WebAPI": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",

@@ -11800,11 +11800,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yusuf\\source\\repos\\SekerSolarBackend\\SekerSolarBackend\\WebAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Yusuf\\source\\repos\\SekerSolarBackend\\WebAPI\\WebAPI.csproj",
       "projectName": "WebAPI",
-      "projectPath": "C:\\Users\\Yusuf\\source\\repos\\SekerSolarBackend\\SekerSolarBackend\\WebAPI.csproj",
+      "projectPath": "C:\\Users\\Yusuf\\source\\repos\\SekerSolarBackend\\WebAPI\\WebAPI.csproj",
       "packagesPath": "C:\\Users\\Yusuf\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Yusuf\\source\\repos\\SekerSolarBackend\\SekerSolarBackend\\obj\\",
+      "outputPath": "C:\\Users\\Yusuf\\source\\repos\\SekerSolarBackend\\WebAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
