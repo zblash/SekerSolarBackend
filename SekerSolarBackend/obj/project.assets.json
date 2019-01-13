@@ -11800,9 +11800,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Yusuf\\source\\repos\\SekerSolarBackend\\SekerSolarBackend\\SekerSolarBackend.csproj",
-      "projectName": "SekerSolarBackend",
-      "projectPath": "C:\\Users\\Yusuf\\source\\repos\\SekerSolarBackend\\SekerSolarBackend\\SekerSolarBackend.csproj",
+      "projectUniqueName": "C:\\Users\\Yusuf\\source\\repos\\SekerSolarBackend\\SekerSolarBackend\\WebAPI.csproj",
+      "projectName": "WebAPI",
+      "projectPath": "C:\\Users\\Yusuf\\source\\repos\\SekerSolarBackend\\SekerSolarBackend\\WebAPI.csproj",
       "packagesPath": "C:\\Users\\Yusuf\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Yusuf\\source\\repos\\SekerSolarBackend\\SekerSolarBackend\\obj\\",
       "projectStyle": "PackageReference",
