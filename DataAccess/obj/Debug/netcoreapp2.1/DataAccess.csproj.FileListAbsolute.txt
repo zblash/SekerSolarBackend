@@ -1,0 +1,6 @@
+C:\Users\Yusuf\source\repos\SekerSolarBackend\DataAccess\bin\Debug\netcoreapp2.1\DataAccess.deps.json
+C:\Users\Yusuf\source\repos\SekerSolarBackend\DataAccess\bin\Debug\netcoreapp2.1\DataAccess.dll
+C:\Users\Yusuf\source\repos\SekerSolarBackend\DataAccess\obj\Debug\netcoreapp2.1\DataAccess.csprojAssemblyReference.cache
+C:\Users\Yusuf\source\repos\SekerSolarBackend\DataAccess\obj\Debug\netcoreapp2.1\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\Yusuf\source\repos\SekerSolarBackend\DataAccess\obj\Debug\netcoreapp2.1\DataAccess.AssemblyInfoInputs.cache
+C:\Users\Yusuf\source\repos\SekerSolarBackend\DataAccess\obj\Debug\netcoreapp2.1\DataAccess.AssemblyInfo.cs
