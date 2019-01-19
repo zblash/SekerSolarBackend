@@ -8,7 +8,7 @@ using Entities.Concrete;
 
 namespace Business.Concrete
 {
-    class UserManager : IUserService
+    public class UserManager : IUserService
     {
         private IUserDal _userDal;
 
@@ -24,7 +24,7 @@ namespace Business.Concrete
 
         public async Task Delete(int userid)
         {
-            await _userDal.Delete(new User{u => u.Id == userid});
+            await _userDal.Delete(new User{Id = userid});
         }
 
         public async Task<List<User>> GetAll()
