@@ -37,7 +37,7 @@ namespace WebAPI.Controllers
             key = Encoding.ASCII.GetBytes(_config["Application:Secret"]);
         }
         [HttpPost("Login")]
-        public async Task<IActionResult> Login([FromBody]LoginModel model)
+        public async Task<ActionResult> Login([FromBody]LoginModel model)
         {
             var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
             if (result.Succeeded)
@@ -54,7 +54,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> Register([FromBody]LoginModel model)
+        public async Task<ActionResult> Register([FromBody]LoginModel model)
         {
             var user = new IdentityUser{UserName = model.UserName};
             var result = await _userManager.CreateAsync(user, model.Password);
