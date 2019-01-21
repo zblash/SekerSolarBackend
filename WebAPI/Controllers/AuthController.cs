@@ -37,36 +37,44 @@ namespace WebAPI.Controllers
             key = Encoding.ASCII.GetBytes(_config["Application:Secret"]);
         }
         [HttpPost("Login")]
-        public async Task<ActionResult> Login([FromBody]LoginModel model)
+        public async Task<ActionResult> Login([FromBody]LoginDTO model)
         {
-            var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
-            if (result.Succeeded)
+            if (ModelState.IsValid)
             {
-                var appUser = await _userManager.Users.SingleOrDefaultAsync(r => r.UserName == model.UserName);
-                var tokenString = _jwtTokenGenerater
-                    .Generate(new Claim[] { new Claim(ClaimTypes.Name, appUser.UserName) }, key, 7)
-                    .WriteToken();
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
+                if (result.Succeeded)
+                {
+                    var appUser = await _userManager.Users.SingleOrDefaultAsync(r => r.UserName == model.UserName);
+                    var tokenString = _jwtTokenGenerater
+                        .Generate(new Claim[] {new Claim(ClaimTypes.Name, appUser.UserName)}, key, 7)
+                        .WriteToken();
 
-                return Ok(new { Token = tokenString });
+                    return Ok(new {Token = tokenString});
+                }
             }
 
             return Unauthorized();
         }
 
         [HttpPost("Register")]
-        public async Task<ActionResult> Register([FromBody]LoginModel model)
+        public async Task<ActionResult> Register([FromBody]RegisterDTO model)
         {
-            var user = new IdentityUser{UserName = model.UserName};
-            var result = await _userManager.CreateAsync(user, model.Password);
-            if (result.Succeeded)
+            if (ModelState.IsValid)
             {
-                var tokenString = _jwtTokenGenerater
-                    .Generate(new Claim[] { new Claim(ClaimTypes.Name, user.UserName) }, key, 7)
-                    .WriteToken();
+                var user = new IdentityUser {UserName = model.UserName,Email = model.Email};
+                
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    var tokenString = _jwtTokenGenerater
+                        .Generate(new Claim[] {new Claim(ClaimTypes.Name, user.UserName)}, key, 7)
+                        .WriteToken();
 
-                return Ok(new { Token = tokenString });
+                    return Ok(new {Token = tokenString});
+                }
             }
-            return Unauthorized();
+
+            return BadRequest();
         }
     }
 }
