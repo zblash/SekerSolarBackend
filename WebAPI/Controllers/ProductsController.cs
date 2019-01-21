@@ -47,5 +47,48 @@ namespace WebAPI.Controllers
             }
             
         }
+
+        [HttpGet("{categoryId}")]
+        public async Task<ActionResult<List<Product>>> GetByCategory(int categoryId)
+        {
+            var products = await _productService.GetByCategory(categoryId);
+            if (products == null)
+            {
+                return NotFound("There are no products matching this category id:" + categoryId);
+            }
+            return Ok(products);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Add([FromBody] Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                await _productService.Add(product);
+                return Ok();
+            }
+
+            return BadRequest();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            await _productService.Delete(id);
+            return Ok();
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Update(int id, [FromBody] Product productModel)
+        {
+            var category = await _productService.GetById(id);
+            if (category != null)
+            {
+                await _productService.Update(productModel);
+                return Ok();
+            }
+
+            return NotFound();
+        }
     }
 }

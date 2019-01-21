@@ -17,5 +17,7 @@ namespace Business.Abstract
         Task Delete(int productid);
 
         Task Update(Product product);
+
+        Task<List<Product>> GetByCategory(int categoryId);
     }
 }
