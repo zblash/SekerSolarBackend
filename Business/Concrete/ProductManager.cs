@@ -32,9 +32,17 @@ namespace Business.Concrete
             return await _productDal.GetList();
         }
 
-        public async Task<Product> GetById(int id)
-        {
-            return await _productDal.Get(p => p.Id == id);
+        public async Task<ProductDto> GetById(int id)
+        { 
+            var Product = await _productDal.Get(p => p.Id == id);
+            return new ProductDto
+            {
+                Id = Product.Id,
+                CategoryId = Product.CategoryId,
+                CategoryName = Product.Category.Name,
+                Name = Product.Name,
+                Description = Product.Description
+            };
         }
 
         public async Task Update(Product product)
@@ -46,5 +54,6 @@ namespace Business.Concrete
         {
             return await _productDal.GetList(p => p.CategoryId == categoryId);
         }
+        
     }
 }

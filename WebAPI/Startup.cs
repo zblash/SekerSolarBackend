@@ -62,7 +62,8 @@ namespace WebAPI
                         ValidateLifetime = true,
                         ValidateIssuerSigningKey = true,
                         ValidateIssuer = false,
-                        ValidateAudience = true
+                        ValidateAudience = true,
+                        ValidAudience = "SomeApp",
                     };
                     x.Events = new JwtBearerEvents()
                     {

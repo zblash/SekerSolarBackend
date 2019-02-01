@@ -14,7 +14,7 @@ namespace DataAccess.Concrete
     where TEntity : class, IEntity, new()
     where TContext : DbContext, new()
     {
-        public async Task<TEntity> Get(Expression<Func<TEntity, bool>> filter)
+        public virtual async Task<TEntity> Get(Expression<Func<TEntity, bool>> filter)
         {
             using (var context = new TContext())
             {
@@ -22,7 +22,7 @@ namespace DataAccess.Concrete
             }
         }
 
-        public async Task<List<TEntity>> GetList(Expression<Func<TEntity, bool>> filter = null)
+        public virtual async Task<List<TEntity>> GetList(Expression<Func<TEntity, bool>> filter = null)
         {
             using (var context = new TContext())
             {

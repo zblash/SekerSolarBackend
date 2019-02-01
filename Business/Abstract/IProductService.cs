@@ -10,7 +10,7 @@ namespace Business.Abstract
     {
         Task<List<Product>> GetAll();
 
-        Task<Product> GetById(int id);
+        Task<ProductDto> GetById(int id);
 
         Task Add(Product product);
 

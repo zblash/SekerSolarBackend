@@ -27,6 +27,7 @@ namespace Business.Concrete
 
         public async Task<List<Category>> GetAll()
         {
+
             return await _categoryDal.GetList();
         }
 
@@ -39,5 +40,6 @@ namespace Business.Concrete
         {
             await _categoryDal.Update(category);
         }
+        
     }
 }

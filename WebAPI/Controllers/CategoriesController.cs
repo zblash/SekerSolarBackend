@@ -49,7 +49,7 @@ namespace WebAPI.Controllers
             }
         }
 
-        [HttpPost]
+        [HttpPost("add")]
         public async Task<ActionResult> Add([FromBody] Category category)
         {
             if (ModelState.IsValid)

@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace WebAPI.Controllers
 {
     [Route("api/[controller]")]
+    [Produces("application/json")]
     [ApiController]
     public class ProductsController : ControllerBase
     {
@@ -24,11 +25,15 @@ namespace WebAPI.Controllers
         public async Task<ActionResult<List<Product>>> Get()
         {
             var products = await _productService.GetAll();
+            foreach (var item in products)
+            {
+                Console.WriteLine(item.Category);
+            }
             return Ok(products);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Product>> Get(int id)
+        public async Task<ActionResult<ProductDto>> Get(int id)
         {
             try
             {
@@ -48,7 +53,7 @@ namespace WebAPI.Controllers
             
         }
 
-        [HttpGet("{categoryId}")]
+        [HttpGet("ByCategory/{categoryId}")]
         public async Task<ActionResult<List<Product>>> GetByCategory(int categoryId)
         {
             var products = await _productService.GetByCategory(categoryId);
@@ -59,7 +64,7 @@ namespace WebAPI.Controllers
             return Ok(products);
         }
 
-        [HttpPost]
+        [HttpPost("Add")]
         public async Task<ActionResult> Add([FromBody] Product product)
         {
             if (ModelState.IsValid)
