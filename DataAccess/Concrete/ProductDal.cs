@@ -16,7 +16,7 @@ namespace DataAccess.Concrete
         {
             using (var context = new AppContext())
             {
-                return await context.Products.Where(filter).Include(p => p.Category).SingleOrDefaultAsync();
+                return await context.Products.Where(filter).Include(p => p.Category).Include(p => p.Photos).SingleOrDefaultAsync();
             }
         }
         public override async Task<List<Product>> GetList(Expression<Func<Product, bool>> filter = null)
@@ -25,8 +25,8 @@ namespace DataAccess.Concrete
             {
      
                  return filter == null
-                    ? await context.Products.Include(p => p.Category).ToListAsync()
-                    : await context.Products.Where(filter).Include(p => p.Category).ToListAsync();
+                    ? await context.Products.Include(p => p.Category).Include(p => p.Photos).ToListAsync()
+                    : await context.Products.Where(filter).Include(p => p.Category).Include(p => p.Photos).ToListAsync();
             }
         }
     }

@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Business.Dtos;
 using Entities.Concrete;
 
 namespace Business.Abstract
 {
     public interface IProductService
     {
-        Task<List<Product>> GetAll();
+        Task<List<ProductDto>> GetAll();
 
         Task<ProductDto> GetById(int id);
 
@@ -18,6 +19,6 @@ namespace Business.Abstract
 
         Task Update(Product product);
 
-        Task<List<Product>> GetByCategory(int categoryId);
+        Task<List<ProductDto>> GetByCategory(int categoryId);
     }
 }

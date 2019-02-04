@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Business.Abstract;
+using Business.Dtos;
 using DataAccess.Abstract;
 using Entities.Concrete;
 
@@ -10,11 +12,12 @@ namespace Business.Concrete
 {
     public class ProductManager : IProductService
     {
-        private IProductDal _productDal;
-
-        public ProductManager(IProductDal productDal)
+        private readonly IProductDal _productDal;
+        private readonly IMapper _mapper;
+        public ProductManager(IProductDal productDal, IMapper mapper)
         {
             _productDal = productDal;
+            _mapper = mapper;
         }
 
         public async Task Add(Product product)
@@ -27,22 +30,18 @@ namespace Business.Concrete
             await _productDal.Delete(new Product {Id = productid});
         }
 
-        public async Task<List<Product>> GetAll()
+        public async Task<List<ProductDto>> GetAll()
         {
-            return await _productDal.GetList();
+            var products = await _productDal.GetList();
+           return _mapper.Map<List<ProductDto>>(products);
         }
 
         public async Task<ProductDto> GetById(int id)
         { 
+
             var Product = await _productDal.Get(p => p.Id == id);
-            return new ProductDto
-            {
-                Id = Product.Id,
-                CategoryId = Product.CategoryId,
-                CategoryName = Product.Category.Name,
-                Name = Product.Name,
-                Description = Product.Description
-            };
+            return _mapper.Map<ProductDto>(Product);
+
         }
 
         public async Task Update(Product product)
@@ -50,9 +49,10 @@ namespace Business.Concrete
             await _productDal.Update(product);
         }
 
-        public async Task<List<Product>> GetByCategory(int categoryId)
+        public async Task<List<ProductDto>> GetByCategory(int categoryId)
         {
-            return await _productDal.GetList(p => p.CategoryId == categoryId);
+            var products = await _productDal.GetList(p => p.CategoryId == categoryId);
+            return _mapper.Map<List<ProductDto>>(products);
         }
         
     }

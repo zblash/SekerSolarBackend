@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Business.Abstract;
+using Business.Dtos;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -22,13 +23,9 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Product>>> Get()
+        public async Task<ActionResult<List<ProductDto>>> Get()
         {
             var products = await _productService.GetAll();
-            foreach (var item in products)
-            {
-                Console.WriteLine(item.Category);
-            }
             return Ok(products);
         }
 
@@ -54,7 +51,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet("ByCategory/{categoryId}")]
-        public async Task<ActionResult<List<Product>>> GetByCategory(int categoryId)
+        public async Task<ActionResult<List<ProductDto>>> GetByCategory(int categoryId)
         {
             var products = await _productService.GetByCategory(categoryId);
             if (products == null)
