@@ -85,9 +85,11 @@ namespace WebAPI
             services.AddScoped<IProductService,ProductManager>();
             services.AddScoped<ICategoryService, CategoryManager>();
             services.AddScoped<IUserService, UserManager>();
+            services.AddScoped<IPhotoService,PhotoManager>();
             services.AddScoped<ICategoryDal, CategoryDal>();
             services.AddScoped<IProductDal, ProductDal>();
             services.AddScoped<IUserDal, UserDal>();
+            services.AddScoped<IPhotoDal, PhotoDal>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
